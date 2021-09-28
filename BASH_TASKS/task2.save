@@ -1,0 +1,20 @@
+#!/bin/bash
+# Task 2
+# Write a script that would take 2 arguments - a directory (DIR) and a number (N)
+echo "Please provide the directory name"
+read directory
+echo "Please provide the number on which to check on subdirectory"
+read nr
+# If the first argument is not a directory, print "not a directory"
+if [ -d "$directory" ];
+clecho "dir exist"
+else
+echo "dir does not exist"
+fi
+# Otherwise print N entries (files/subdirectories) from DIR
+# If DIR contains less than N entries, print all the entries and "No more entries" string at the end
+
+# Task 3
+# Do the same as in Task 2, but print N lexicographically last entries
+# Consider using `sort` or `ls -r`
+

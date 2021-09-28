@@ -1,0 +1,26 @@
+#!/bin/bash
+# Task 4
+# Write a script that would take 1 argument - file location
+
+echo "Please give path on which you want to search"
+read path
+echo "Please provide the file/directory name you want to check"
+read file
+
+a="$(find "$path" -name "$file")" 
+echo "Path is "$a" and file exists"
+
+# If this file exists and is a text file, append "BYE!" to the file (write it to the end of file)
+
+if [ -f "$a" ]
+then
+echo "it is a file and it exists"
+echo "BYE" >> "$file"
+# If the file does not exist, return error code and print "Does not exist"
+else
+echo "Does not exist"
+fi
+
+# If the file is a binary file, print "Is binary - cannot modify"
+# Consider using `file`
+

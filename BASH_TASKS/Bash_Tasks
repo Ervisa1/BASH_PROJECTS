@@ -1,0 +1,146 @@
+# Those tasks may include usage of some extra Linux tools
+# for example grep, sed, sort, find, cp, mv, du, df, wc etc.
+# for each such task there will be a hint of what to use
+# For tasks that require doing things recursively in subdirectories, consider using functions
+
+# Task 1
+# Write a script that would take one argument - a GitHub repository address
+# Clone this repository
+# If the repository is a Maven project (i.e. top directory contains a pom.xml file) print "Maven" else print "Not Maven"
+
+# Task 2
+# Write a script that would take 2 arguments - a directory (DIR) and a number (N)
+# If the first argument is not a directory, print "not a directory"
+# Otherwise print N entries (files/subdirectories) from DIR
+# If DIR contains less than N entries, print all the entries and "No more entries" string at the end
+
+# Task 3
+# Do the same as in Task 2, but print N lexicographically last entries
+# Consider using `sort` or `ls -r`
+
+# Task 4
+# Write a script that would take 1 argument - file location
+# If this file exists and is a text file, append "BYE!" to the file (write it to the end of file)
+# If the file does not exist, return error code and print "Does not exist"
+# If the file is a binary file, print "Is binary - cannot modify"
+# Consider using `file`
+
+# Task 5
+# Write a script that would take 1 argument - file location
+# If the file exists, print number of words in the file
+# Otherwise print "no file"
+# Assume that the file is text and not binary
+# Consider using `wc`
+
+# Task 6
+# Write a script that would take 1 argument - file location
+# If the file exists, print lexicographically last word from the file (e.g. "zebra" from "an elephant and zebra")
+# Otherwise print "no file"
+# Assume that the file is text and not binary
+# Drop punctuation and ignore case
+# Consider using `sort` and `tr`
+
+# Task 7
+# Write a script that would take 2 arguments - GitHub repository name and a tag (TAG)
+# Clone the repository / if you cannot, print "cannot clone" and exit with an error
+# If the repository does not contain a Dockerfile, print "cannot build Docker" and exit with an error
+# Otherwise build Docker image and tag it with TAG
+
+# Task 8
+# Write a script that would take 1 argument - directory name
+# Print all its subdirectories
+# For this and following tasks consider using `find` or `ls`
+
+# Task 9 
+# Same as Task 8, but apply recursively to all subdirectories
+# i.e., for a given directory, print all its subdirectories, subdirectories of subdirectories etc.
+
+# Task 10
+# Same as Task 9, but print all files and no directories
+
+# Task 11
+# Same as Task 10, but take additional argument - an extension
+# Print only files with given extension
+
+# Task 12
+# Write a script that would take 1 argument - path to a file
+# Print the word that appears most often
+# Ignore punctuation (it's ok if ',' or '.' are the most common words)
+# Consider using `sort` and `uniq`
+
+# Task 13 
+# Same as Task 12, but remove punctuation from input stream
+# Consider using `sed`, `tr` or `awk`
+
+# Task 14
+# Write a script that would take 2 arguments - source directory and target directory
+# Copy all files with .sh extension from source to target
+# Create symbolic links in target for all directories from source
+# Consider using `ln` and `cp`
+
+# Task 15
+# Write a script that would take 1 argument - a directory
+# Then print the biggest file in the directory (don't include subdirectories)
+# Consider using `du` or `ls`
+
+# Task 16
+# Same as Task 15, but include subdirectories
+
+# Task 17
+# Write a script that would take any number of arguments
+# Print the number of arguments
+# Print the most common argument and it's number of occurences
+
+# Task 18
+# Write a script that would take up to four arguments
+# Assume that each argument is mounted on a separate volume/drive
+# Print in descending order the amount of space left in each volume
+# Consider using `df` and `sort`
+
+# Task 19
+# Write a script that would take one argument - a path
+# Make sure that the path exists (create it, if it doesn't)
+# Initialize a git repository inside the path
+# Create an empty .gitignore file
+# Create a file named "SOURCE" with the path from the argument inside and print the path
+# Commit changes to the repository
+# Consider using `tee`, `touch`
+
+# Task 20
+# Write a script that would take one argument - web address (ADDR)
+# Check what is the delay to connect to the host (use `ping`)
+# Download the website that ADDR points to (use `wget` or `curl`)
+# Print which of the operations took longer
+# Do NOT print the website
+# Consider using `time`
+
+# Task 21
+# Write a script that would take one argument - process name
+# Print number of instances of that process
+# Consider using `ps`
+
+
+# Example mid-project tasks
+# Example 1
+# Write a script that would take 2 arguments - GitHub repository address (ADDR) and file extension (EXT)
+# Make sure that ADDR is an address to GitHub repository (starts with https://github.com/)
+# Extract and print organization/user and repository name (i.e., https://github.com/<org_name>/<repo_name>)
+# Clone the repository from ADDR
+# If the repository contains a LICENSE or LICENSE.md file, print its first line - otherwise print "No LICENSE"
+# Count the number of lines of text in all files that have extension EXT
+# Make sure that you only count lines in text files, not in binary files 
+# Let user give EXT with or without dot (i.e., both EXT=.js and EXT=js should yield same result)
+# Consider using `file`, `wc` and `find`. Don't use `cloc`.
+
+# Example 2
+# Write a script that would take 2 arguments - GitHub repository address (ADDR) and file extension (EXT)
+# Make sure that ADDR is an address to GitHub repository (starts with https://github.com/)
+# Extract and print organization/user and repository name (i.e., https://github.com/<org_name>/<repo_name>)
+# Clone the repository from ADDR
+# Assume that the repository is a single project and not a monorepo
+# If the repository is a Maven repository, build it with Maven (download Maven if needed or use Maven Wrapper from the repository)
+# If the repository is a Gradle repository, build it with Gradle (download Gradle if needed or use Gradle Wrapper from the repository)
+# If the repository is an NPM project, build it with NPM (make sure that npm is installed)
+# Otherwise print "Not supported project type" and exit with an error
+# From build.gradle, pom.xml or package.json extract project version
+# If the repository contains a Dockerfile, build the image and tag it <project_name>:<project_version>

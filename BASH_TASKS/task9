@@ -1,0 +1,11 @@
+#!/bin/bash
+# Task 9
+# Write a script that would take 1 argument - directory name
+echo "Please provide a directory name"
+read directory
+path=/home/
+a="$(find "$path" -name "$directory")"
+echo "DIRECTORY exists and its path is "$a""
+# i.e., for a given directory, print all its subdirectories, subdirectories of subdirectories etc.
+find "$a" -print
+# For this and following tasks consider using `find` or `ls`

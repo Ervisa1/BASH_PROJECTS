@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Task 1
+# Write a script that would take one argument - a GitHub repository address
+echo "Dear user please provide the GIT repository address"
+read repoadd
+
+# Clone this repository
+git clone "$repoadd"
+
+a="$(ls -tr | tail -1)"
+echo "$a"
+
+# If the repository is a Maven project (i.e. top directory contains a pom.xml file) print "Maven" else print "Not Maven"
+#echo "Checking if pom.xml file exists"
+git ls-tree --name-only HEAD | grep pom.xml > checkfile.txt
+if [ -s checkfile.txt ]
+then
+echo "Maven"
+else
+echo "Not Maven"
+fi
+rm checkfile.txt
+#git ls-remote  #to see available git  init
+
+yes | rm -rvI "$a"/

@@ -1,0 +1,34 @@
+#!/bin/bash
+# Task 2
+# Write a script that would take 2 arguments - a directory (DIR) and a number (N)
+echo "Please give path on which you want to search"
+read path
+echo "Please provide the file/directory name you want to check"
+read directory
+echo "Please provide the number on which to check on subdirectory"
+read nr
+# If the first argument is not a directory, print "not a directory"
+a="$(find "$path" -name "$directory")" 
+echo "Path is "$a""
+if [ -d "$a" ]
+then
+echo "it is a directory"
+else
+echo "it is not a directory"
+fi
+
+
+# Otherwise print N entries (files/subdirectories) from DIR
+lines=$(find "$a" -print | wc -l)
+#echo $lines
+find "$a" -print > .file.txt
+if [ $lines -gt $nr ]
+then
+awk '{print $1}' .file.txt | head -n$nr
+# If DIR contains less than N entries, print all the entries and "No more entries" string at the end
+else
+awk '{print $1}' .file.txt | head -n$lines
+echo "No ore entries"
+fi
+
+rm .file.txt

@@ -1,0 +1,16 @@
+#!/bin/bash
+# Task 6
+# Write a script that would take 1 argument - file location
+echo "Please provide the path file"
+read pathfile
+# If the file exists, print lexicographically last word from the file (e.g. "zebra" from "an elephant and zebra")
+for i in $(cat "$pathfile")
+do
+echo $i >> tempfile.txt
+done
+echo "$(sort tempfile.txt)"
+rm tempfile.txt
+
+# Assume that the file is text and not binary
+# Drop punctuation and ignore case
+# Consider using `sort` and `tr`

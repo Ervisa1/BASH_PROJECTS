@@ -1,0 +1,24 @@
+#!/bin/bash
+# Task 8
+# Write a script that would take 1 argument - directory name
+echo "Please provide a directory name"
+read directory
+path=/home/
+a="$(find "$path" -name "$directory")"
+echo "DIRECTORY exists and its path is "$a""
+find "$a" -print > filetemp.txt
+lines=$(find "$a" -print | wc -l)
+echo "$lines"
+# Print all its subdirectories
+for (( i=1 ; i<$lines ; i++ ))
+do 
+if [ -d "$(awk '{print $1}' filetemp.txt | head -n$i | tail -1)" ]
+then
+awk '{print $1}' filetemp.txt | head -n$i | tail -1 >> file1temp.txt
+else
+echo ""
+fi
+done
+cat file1temp.txt
+rm filetemp.txt file1temp.txt
+# For this and following tasks consider using `find` or `ls`

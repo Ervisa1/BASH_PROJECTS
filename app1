@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Please enter a nr from 20-30"
+a=1
+while [ $a -eq 1 ]
+do
+read nr
+if [ $nr -gt 20 ] && [ $nr -lt 30 ]
+then
+echo "thank you for putting correct nr which is $nr "
+a=2 
+else
+echo "Please enter correct number from 20-30"
+fi
+done
+

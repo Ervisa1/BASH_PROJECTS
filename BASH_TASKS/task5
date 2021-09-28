@@ -1,0 +1,17 @@
+#!/bin/bash
+# Task 5
+
+# Write a script that would take 1 argument - file location
+echo "Please provide the path location of the file"
+read pathfile
+# If the file exists, print number of words in the file
+if [ -f "$pathfile" ]
+then 
+a=$(cat "$pathfile" | wc -w)
+echo "nr of words is $a "
+# Otherwise print "no file"
+else
+echo "no file"
+fi
+# Assume that the file is text and not binary
+# Consider using `wc`
